@@ -3,6 +3,8 @@ package pokerkata;
 
 class ReadOutOfHandAndRanking {
 
+    
+    
 public void printPlayersHandAndRanking(HandRankings evaluatedHand, 
                                        HandOfFiveCards playersHand) {
         System.out.print(playersHand.getPlayer()+" Player's Hand: ");
