@@ -3,7 +3,7 @@ package pokerkata;
 
 class PokerGame {
 
-    void playARound(DeckOfCards deck, HandOfFiveCards whitePlayersHand, HandOfFiveCards blackPlayersHand, 
+    public void playARound(DeckOfCards deck, HandOfFiveCards whitePlayersHand, HandOfFiveCards blackPlayersHand, 
                     HandRankings whitePlayerHandEvaluator, HandRankings blackPlayerHandEvaluator) {
     if((blackPlayersHand.counter%5)==0) {  
         deck.makeANewDeck();

@@ -20,8 +20,6 @@ public class HandOfFiveCards {
     private ArrayList<String> listOfValues;
     private ArrayList<Integer> sortedListOfNumericValues;
     
-    private int numericValueToAdd;
-    
     private static int instanceCounter = 0;
     int counter = 0;
     
@@ -85,7 +83,7 @@ public class HandOfFiveCards {
             if(listOfValues.get(i).equals("A")){
                 listOfValues.set(i, "14");
             }
-        sortedListOfNumericValues.add(numericValueToAdd  = Integer.parseInt(listOfValues.get(i)));
+        sortedListOfNumericValues.add(Integer.parseInt(listOfValues.get(i)));
         }
         
         Collections.sort(sortedListOfNumericValues);
