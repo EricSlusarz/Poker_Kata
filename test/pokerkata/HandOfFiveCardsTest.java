@@ -3,13 +3,13 @@ package pokerkata;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class HandOfFiveCardsTest {
     
-    public HandOfFiveCardsTest() {
-    }
+    private HandOfFiveCards instance;
     
     @BeforeClass
     public static void setUpClass() {
@@ -19,11 +19,15 @@ public class HandOfFiveCardsTest {
     @AfterClass
     public static void tearDownClass() {
         System.out.println("----End of Hand Of Five Test----");
-   }  
+    }
+    
+    @Before
+    public void setUp(){
+    instance = new HandOfFiveCards();    
+    }
     
     @Test
     public void testGetCounter() {
-        HandOfFiveCards instance = new HandOfFiveCards();
         int expResult = 0;
         int result = instance.getCounter();
         assertEquals("Error: Excepted 0",expResult, result);
@@ -31,7 +35,6 @@ public class HandOfFiveCardsTest {
 
     @Test
     public void testMakeANewHand_CheckForNumberTwo() {
-        HandOfFiveCards instance = new HandOfFiveCards();
         instance.makeANewHand("AS", "9S", "2H", "QH", "7D");
         assertTrue(instance.getSortedHand().size()==5);
         assertTrue("Error: Expecting first card's value to be \"2\"",instance.getSortedHand().contains(2));
@@ -39,7 +42,6 @@ public class HandOfFiveCardsTest {
 
     @Test
     public void testMakeANewHand_CheckForNumberAssingedToAce() {
-        HandOfFiveCards instance = new HandOfFiveCards();
         instance.makeANewHand("AS", "9S", "2H", "QH", "7D");
         assertTrue(instance.getSortedHand().size()==5);
         assertTrue("Error: Expecting last card's value to be \"14\"",instance.getSortedHand().contains(14));
@@ -47,7 +49,6 @@ public class HandOfFiveCardsTest {
     
     @Test
     public void testGetFirstCardsuit() {
-        HandOfFiveCards instance = new HandOfFiveCards();
         instance.makeANewHand("AS", "9S", "2H", "QH", "7D");        
         String result = instance.getFirstCardsuit();
         assertEquals("Error: First card suit should be \"S\"","S", result);
@@ -55,7 +56,6 @@ public class HandOfFiveCardsTest {
 
     @Test
     public void testGetSecondCardsuit() {
-        HandOfFiveCards instance = new HandOfFiveCards();
         instance.makeANewHand("AS", "5C", "2H", "QH", "7D");        
         String result = instance.getSecondCardsuit();
         assertEquals("Error: Second card suit should be \"C\"","C", result);
@@ -63,7 +63,6 @@ public class HandOfFiveCardsTest {
 
     @Test
     public void testGetThirdCardsuit() {
-        HandOfFiveCards instance = new HandOfFiveCards();
         instance.makeANewHand("AS", "9S", "2H", "QH", "7D");        
         String result = instance.getThirdCardsuit();
         assertEquals("Error: Third card suit should be \"H\"","H", result);
@@ -71,7 +70,6 @@ public class HandOfFiveCardsTest {
 
     @Test
     public void testGetFourthCardsuit() {
-        HandOfFiveCards instance = new HandOfFiveCards();
         instance.makeANewHand("AS", "9S", "2H", "QH", "7D");        
         String result = instance.getFourthCardsuit();
         assertEquals("Error: Fourth card suit should be \"H\"","H", result);
@@ -79,7 +77,6 @@ public class HandOfFiveCardsTest {
 
     @Test
     public void testGetFifthCardsuit() {
-        HandOfFiveCards instance = new HandOfFiveCards();
         instance.makeANewHand("AS", "9S", "2H", "QH", "7D");        
         String result = instance.getFifthCardsuit();    
         assertEquals("Error: Fifth card suit should be \"D\"","D", result);

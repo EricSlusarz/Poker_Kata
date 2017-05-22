@@ -4,13 +4,13 @@ package pokerkata;
 import java.util.List;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class DeckOfCardsTest {
     
-    public DeckOfCardsTest() {
-    }
+    private DeckOfCards instance;
     
     @BeforeClass
     public static void setUpClass() {
@@ -22,9 +22,13 @@ public class DeckOfCardsTest {
         System.out.println("----End of Deck Of Cards Test----");
     }
     
+    @Before
+    public void setUp(){
+        instance = new DeckOfCards();
+    }
+    
     @Test
     public void testDeckHas52Cards() {
-        DeckOfCards instance = new DeckOfCards();
         List result = instance.makeANewDeck();
         int NumberOfCardsInDeck = result.size();               
         assertEquals("Error: There Should be 52 Cards",52, NumberOfCardsInDeck);
@@ -32,7 +36,6 @@ public class DeckOfCardsTest {
 
     @Test
     public void testMakeANewDeck_CheckFirstCard() {
-        DeckOfCards instance = new DeckOfCards();
         List result = instance.makeANewDeck();
         Object FirstCard = result.get(0);
         assertNotNull("Error: first card should not be null",FirstCard);
@@ -40,7 +43,6 @@ public class DeckOfCardsTest {
   
     @Test
     public void testMakeANewDeck_CheckLastCard() {
-        DeckOfCards instance = new DeckOfCards();
         List result = instance.makeANewDeck();
         Object LastCard = result.get(51);
         assertNotNull("Error: last card should not be null",LastCard);
@@ -48,7 +50,6 @@ public class DeckOfCardsTest {
     
     @Test
     public void testShuffleAndDraw() {
-        DeckOfCards instance = new DeckOfCards();
         List result = instance.makeANewDeck();
         String randomcard = instance.drawOneCard();
         assertNotNull("Error: Randomly drawn card should not be null",randomcard);
@@ -56,7 +57,6 @@ public class DeckOfCardsTest {
 
     @Test
     public void testCompareFirstCardThroughTwoMethods() {
-        DeckOfCards instance = new DeckOfCards();
         List result = instance.makeANewDeck();
         Object firstcardInDeck = result.get(0);
         String cardUsingdrawOneCardMethod = instance.drawOneCard();

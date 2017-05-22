@@ -12,7 +12,4 @@ import org.junit.runners.Suite;
     TieBreakerEvaluationTest.class,
 })
 public class TestSuite {
-    
-    public TestSuite() {
-    }    
 }

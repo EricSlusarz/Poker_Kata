@@ -3,13 +3,16 @@ package pokerkata;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TieBreakerEvaluationTest {
     
-    public TieBreakerEvaluationTest() {
-    }
+    private HandOfFiveCards blackHand;
+    private HandOfFiveCards whiteHand;
+    private HandRankings tieBreakerFor;
+    private TieBreakerEvaluation instance;
     
     @BeforeClass
     public static void setUpClass() {
@@ -20,15 +23,19 @@ public class TieBreakerEvaluationTest {
     public static void tearDownClass() {
         System.out.println("----End of Tie Breaker Evaluation Test----");
     }
-
+    
+    @Before
+    public void setUp(){
+        blackHand = new HandOfFiveCards();
+        whiteHand = new HandOfFiveCards();
+        tieBreakerFor = new HandRankings();
+        instance = new TieBreakerEvaluation();
+    }
+    
     @Test
     public void testCompareTiedStraightFlushHands() {
-        HandOfFiveCards blackHand = new HandOfFiveCards();
         blackHand.makeANewHand("TS","JS","QS","KS","AS");
-        HandOfFiveCards whiteHand = new HandOfFiveCards();
         whiteHand.makeANewHand("9S","TS","JS","QS","KS");
-        HandRankings tieBreakerFor = new HandRankings();
-        TieBreakerEvaluation instance = new TieBreakerEvaluation();
         tieBreakerFor.setScoreOfHand(9);
         boolean expResult = true; //Since true means Black Wins
         boolean result = instance.compareTiedHands(blackHand, whiteHand, tieBreakerFor);
@@ -37,12 +44,8 @@ public class TieBreakerEvaluationTest {
 
     @Test
     public void testCompareTiedFourOfAKindHands() {
-        HandOfFiveCards blackHand = new HandOfFiveCards();
         blackHand.makeANewHand("TD","TC","TS","TH","2S");
-        HandOfFiveCards whiteHand = new HandOfFiveCards();
         whiteHand.makeANewHand("9d","9H","9C","9S","KS");
-        HandRankings tieBreakerFor = new HandRankings();
-        TieBreakerEvaluation instance = new TieBreakerEvaluation();
         tieBreakerFor.setScoreOfHand(8);
         boolean expResult = true; //Since true means Black Wins
         boolean result = instance.compareTiedHands(blackHand, whiteHand, tieBreakerFor);
@@ -52,12 +55,8 @@ public class TieBreakerEvaluationTest {
     @Test
     
     public void testCompareTiedFullHouseHands() {
-        HandOfFiveCards blackHand = new HandOfFiveCards();
         blackHand.makeANewHand("JS","JD","KC","KS","KD");
-        HandOfFiveCards whiteHand = new HandOfFiveCards();
         whiteHand.makeANewHand("5C","5S","3D","3C","3S");
-        HandRankings tieBreakerFor = new HandRankings();
-        TieBreakerEvaluation instance = new TieBreakerEvaluation();
         tieBreakerFor.setScoreOfHand(7);
         boolean expResult = true; //Since true means Black Wins
         boolean result = instance.compareTiedHands(blackHand, whiteHand, tieBreakerFor);
@@ -66,12 +65,8 @@ public class TieBreakerEvaluationTest {
 
     @Test
     public void testCompareTiedFlushHands() {
-        HandOfFiveCards blackHand = new HandOfFiveCards();
         blackHand.makeANewHand("2S","JS","QS","5S","AS");
-        HandOfFiveCards whiteHand = new HandOfFiveCards();
         whiteHand.makeANewHand("9D","6D","JD","2D","KD");
-        HandRankings tieBreakerFor = new HandRankings();
-        TieBreakerEvaluation instance = new TieBreakerEvaluation();
         tieBreakerFor.setScoreOfHand(6);
         boolean expResult = true; //Since true means Black Wins
         boolean result = instance.compareTiedHands(blackHand, whiteHand, tieBreakerFor);
@@ -79,12 +74,8 @@ public class TieBreakerEvaluationTest {
     }    
     @Test
     public void testCompareTiedStraightHands() {
-        HandOfFiveCards blackHand = new HandOfFiveCards();
         blackHand.makeANewHand("7D","8S","9D","5C","6S");
-        HandOfFiveCards whiteHand = new HandOfFiveCards();
         whiteHand.makeANewHand("6D","5S","4C","3C","2S");
-        HandRankings tieBreakerFor = new HandRankings();
-        TieBreakerEvaluation instance = new TieBreakerEvaluation();
         tieBreakerFor.setScoreOfHand(5);
         boolean expResult = true; //Since true means Black Wins
         boolean result = instance.compareTiedHands(blackHand, whiteHand, tieBreakerFor);
@@ -92,12 +83,8 @@ public class TieBreakerEvaluationTest {
     }    
     @Test
     public void testCompareTiedThreeOfAKindHands() {
-        HandOfFiveCards blackHand = new HandOfFiveCards();
         blackHand.makeANewHand("9S","9D","9C","2S","KS");
-        HandOfFiveCards whiteHand = new HandOfFiveCards();
         whiteHand.makeANewHand("3D","3C","3S","5S","6S");
-        HandRankings tieBreakerFor = new HandRankings();
-        TieBreakerEvaluation instance = new TieBreakerEvaluation();
         tieBreakerFor.setScoreOfHand(4);
         boolean expResult = true; //Since true means Black Wins
         boolean result = instance.compareTiedHands(blackHand, whiteHand, tieBreakerFor);
@@ -106,12 +93,8 @@ public class TieBreakerEvaluationTest {
 
     @Test
     public void testCompareTiedTwoPairHands() {
-        HandOfFiveCards blackHand = new HandOfFiveCards();
         blackHand.makeANewHand("TS","TD","AD","AS","5S");
-        HandOfFiveCards whiteHand = new HandOfFiveCards();
         whiteHand.makeANewHand("TC","TH","AH","AC","4S");
-        HandRankings tieBreakerFor = new HandRankings();
-        TieBreakerEvaluation instance = new TieBreakerEvaluation();
         tieBreakerFor.setScoreOfHand(3);
         boolean expResult = true; //Since true means Black Wins
         boolean result = instance.compareTiedHands(blackHand, whiteHand, tieBreakerFor);
@@ -120,12 +103,8 @@ public class TieBreakerEvaluationTest {
 
     @Test
     public void testCompareTiedOnePairHands() {
-        HandOfFiveCards blackHand = new HandOfFiveCards();
         blackHand.makeANewHand("KS","KD","AS","5S","JD");
-        HandOfFiveCards whiteHand = new HandOfFiveCards();
         whiteHand.makeANewHand("KH","KC","QS","QC","4S");
-        HandRankings tieBreakerFor = new HandRankings();
-        TieBreakerEvaluation instance = new TieBreakerEvaluation();
         tieBreakerFor.setScoreOfHand(2);
         boolean expResult = true; //Since true means Black Wins
         boolean result = instance.compareTiedHands(blackHand, whiteHand, tieBreakerFor);
@@ -134,12 +113,8 @@ public class TieBreakerEvaluationTest {
 
     @Test
     public void testCompareTiedHighCardHands() {
-        HandOfFiveCards blackHand = new HandOfFiveCards();
         blackHand.makeANewHand("AS","QD","JH","5D","4C");
-        HandOfFiveCards whiteHand = new HandOfFiveCards();
         whiteHand.makeANewHand("AC","QH","JD","5S","3C");
-        HandRankings tieBreakerFor = new HandRankings();
-        TieBreakerEvaluation instance = new TieBreakerEvaluation();
         tieBreakerFor.setScoreOfHand(1);
         boolean expResult = true; //Since true means Black Wins
         boolean result = instance.compareTiedHands(blackHand, whiteHand, tieBreakerFor);
