@@ -35,13 +35,3 @@ Try to use less if else
 Setup methods to unit test easier
 Pass less parameters next time
 */
-
-/*
-A quote I made while in coding bootcamp:
-To gain knowledge you need to struggle thorough the material
-Knowledge can’t go beyond your experience (i.e. the struggle)
-Study, watch, learn, collaborate, and code (i.e. the experience)
-Believe what you do makes a difference. It does.
-
-Thanks for your time and consideration.
-*/
