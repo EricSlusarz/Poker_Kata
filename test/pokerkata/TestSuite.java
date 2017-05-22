@@ -11,8 +11,8 @@ import org.junit.runners.Suite;
     HandRankingsTest.class,
     TieBreakerEvaluationTest.class,
 })
-public class SuiteTest {
+public class TestSuite {
     
-    public SuiteTest() {
+    public TestSuite() {
     }    
 }

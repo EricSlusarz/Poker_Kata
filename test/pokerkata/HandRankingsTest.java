@@ -26,8 +26,10 @@ public class HandRankingsTest {
         HandOfFiveCards hand = new HandOfFiveCards();
         DeckOfCards deck = new DeckOfCards();
         deck.makeANewDeck();
-        hand.makeANewHand(deck.drawOneCard(),deck.drawOneCard(),
-                          deck.drawOneCard(),deck.drawOneCard(),
+        hand.makeANewHand(deck.drawOneCard(),
+                          deck.drawOneCard(),
+                          deck.drawOneCard(),
+                          deck.drawOneCard(),
                           deck.drawOneCard());
         HandRankings instance = new HandRankings();
         instance.evaluatePokerHand(hand);
@@ -115,95 +117,4 @@ public class HandRankingsTest {
         assertEquals("Error: High Card scoreOfHand Should be 9",9, instance.getScoreOfHand());
         assertEquals("Error: High Card nameOfHand Should be \"Straight Flush\".", "Straight Flush", instance.getNameOfHand());
     }
-
-    @Test
-    public void testFindConsecutiveValues() {
-        HandOfFiveCards hand = new HandOfFiveCards();
-        hand.makeANewHand("6D","7D","8D","9D","TD");
-        HandRankings testConsecutiveValues = new HandRankings();
-        int i = 0;
-        boolean expResult = false;
-        boolean result = testConsecutiveValues.findConsecutiveValues(hand, i);
-        assertEquals("Error: Consecutive values expected",expResult, result);
-    }
-    
-    @Test
-    public void testFindNonConsecutiveValues() {
-        HandOfFiveCards hand = new HandOfFiveCards();
-        hand.makeANewHand("2D","7S","TD","AD","TD");        
-        HandRankings testNonConsecutiveValues = new HandRankings();
-        int i = 0;
-        boolean expResult = true;
-        boolean result = testNonConsecutiveValues.findConsecutiveValues(hand, i);
-        assertEquals("Error: Non-consecutive values expected",expResult, result);
-    }    
-    
-    @Test
-    public void testCompareAllCardsForSameSuit() {
-        HandOfFiveCards hand = new HandOfFiveCards();
-        hand.makeANewHand("6D","7D","8D","9D","TD");
-        HandRankings testAllSameSuit = new HandRankings();        
-        boolean expResult = true;
-        boolean result = testAllSameSuit.compareAllCardsForSameSuit(hand);
-        assertEquals("Error: All Cards of the same suit expected",expResult, result);
-    }
-
-    @Test
-    public void testCompareAllCardsForNotTheSameSuit() {
-        HandOfFiveCards hand = new HandOfFiveCards();
-        hand.makeANewHand("6S","2C","TD","3C","KH");        
-        HandRankings testAllNonSameSuit = new HandRankings();        
-        boolean expResult = false;
-        boolean result = testAllNonSameSuit.compareAllCardsForSameSuit(hand);
-        assertEquals("Error: Varying suits expected",expResult, result);
-    }    
-    
-    
-    @Test
-    public void testCompareTwoPositionsInHand_FirstSecond() {
-        HandOfFiveCards hand = new HandOfFiveCards();
-        hand.makeANewHand("2S","2C","TD","3C","KH");        
-        HandRankings testComparePosition = new HandRankings();        
-        int firstPosition = 0;
-        int SecondPosition = 1;
-        boolean expResult = true;
-        boolean result = testComparePosition.compareTwoPositionsInHand(hand, firstPosition, SecondPosition);
-        assertEquals("Error: Expected same value at first and second positions",expResult, result);
-    }
-    
-    @Test
-    public void testCompareTwoPositionsInHand_SecondThird() {
-        HandOfFiveCards hand = new HandOfFiveCards();
-        hand.makeANewHand("2S","3C","3D","TC","KH");        
-        HandRankings testComparePosition = new HandRankings();        
-        int firstPosition = 1;
-        int SecondPosition = 2;
-        boolean expResult = true;
-        boolean result = testComparePosition.compareTwoPositionsInHand(hand, firstPosition, SecondPosition);
-        assertEquals("Error: Expected same value at second and third positions",expResult, result);
-    }    
-    
-    @Test
-    public void testCompareTwoPositionsInHand_ThirdFourth() {
-        HandOfFiveCards hand = new HandOfFiveCards();
-        hand.makeANewHand("2S","2C","3D","3C","KH");        
-        HandRankings testComparePosition = new HandRankings();        
-        int firstPosition = 2;
-        int SecondPosition = 3;
-        boolean expResult = true;
-        boolean result = testComparePosition.compareTwoPositionsInHand(hand, firstPosition, SecondPosition);
-        assertEquals("Error: Expected same value at third and fourth positions",expResult, result);
-    }       
-    
-    @Test
-    public void testCompareTwoPositionsInHand_FourthFifth() {
-        HandOfFiveCards hand = new HandOfFiveCards();
-        hand.makeANewHand("2S","8C","7D","KC","KH");        
-        HandRankings testComparePosition = new HandRankings();        
-        int firstPosition = 3;
-        int SecondPosition = 4;
-        boolean expResult = true;
-        boolean result = testComparePosition.compareTwoPositionsInHand(hand, firstPosition, SecondPosition);
-        assertEquals("Error: Expected same value at fourth and fifth positions",expResult, result);
-    }        
 }

@@ -1,4 +1,5 @@
 package pokerkata;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -17,21 +18,18 @@ public class HandOfFiveCards {
     private String fifthCardValue;
     
     private ArrayList<String> listOfValues;
-    private ArrayList<Integer> SortedListOfNumericValues;
+    private ArrayList<Integer> sortedListOfNumericValues;
     
-    private int firstCardNumericValue;
-    private int secondCardNumericValue;
-    private int thirdCardNumericValue;
-    private int fourthCardNumericValue;
-    private int fifthCardNumericValue;
+    private int numericValueToAdd;
     
     private static int instanceCounter = 0;
     int counter = 0;
+    
     private String player = "White Player";
     
   public HandOfFiveCards(){
-        this.listOfValues = new ArrayList<>();
-        this.SortedListOfNumericValues = new ArrayList<>();
+        listOfValues = new ArrayList<>();
+        sortedListOfNumericValues = new ArrayList<>();
   }
   
     public void makeANewHand(String firstCard, String secondCard,String thirdCard, 
@@ -48,7 +46,7 @@ public class HandOfFiveCards {
                           String fourthCard,String fifthCard) {
 
         listOfValues.removeAll(listOfValues);
-        SortedListOfNumericValues.removeAll(SortedListOfNumericValues);
+        sortedListOfNumericValues.removeAll(sortedListOfNumericValues);
         
         firstCardsuit = firstCard.substring(1);
         firstCardValue = firstCard.substring(0,1);
@@ -87,21 +85,10 @@ public class HandOfFiveCards {
             if(listOfValues.get(i).equals("A")){
                 listOfValues.set(i, "14");
             }
+        sortedListOfNumericValues.add(numericValueToAdd  = Integer.parseInt(listOfValues.get(i)));
         }
         
-        firstCardNumericValue  = Integer.parseInt(listOfValues.get(0));          
-        secondCardNumericValue = Integer.parseInt(listOfValues.get(1));
-        thirdCardNumericValue  = Integer.parseInt(listOfValues.get(2));
-        fourthCardNumericValue = Integer.parseInt(listOfValues.get(3));
-        fifthCardNumericValue  = Integer.parseInt(listOfValues.get(4));
-        
-        SortedListOfNumericValues.add(firstCardNumericValue);
-        SortedListOfNumericValues.add(secondCardNumericValue);
-        SortedListOfNumericValues.add(thirdCardNumericValue);
-        SortedListOfNumericValues.add(fourthCardNumericValue);
-        SortedListOfNumericValues.add(fifthCardNumericValue);
-        
-        Collections.sort(SortedListOfNumericValues);
+        Collections.sort(sortedListOfNumericValues);
     }
 
     public String getFirstCardsuit() {
@@ -141,8 +128,6 @@ public class HandOfFiveCards {
     }
     
     public ArrayList<Integer> getSortedHand() {
-        return SortedListOfNumericValues;
+        return sortedListOfNumericValues;
     }
 }
-
-

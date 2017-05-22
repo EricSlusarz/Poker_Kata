@@ -97,9 +97,9 @@ public class TieBreakerEvaluation{
             whiteHand.getSortedHand().removeIf(whiteHand.getSortedHand().get(2)::equals);
             if(compareSameHandPositionForBlackWin(blackHand, 0, whiteHand)){
                 return true;
-            } else{
-              return FlipCoin();
-            }
+            } else if(compareSameHandPositionForWhiteWin(blackHand, 0, whiteHand)){
+              return false;
+            } FlipCoin();
         }
             
         case 9: if(compareSameHandPositionForBlackWin(blackHand, 4, whiteHand)){
@@ -110,19 +110,19 @@ public class TieBreakerEvaluation{
     }           return FlipCoin();
 }
 
-    public boolean compareBothHandsAtSamePosition(HandOfFiveCards blackHand, int samePosition, HandOfFiveCards whiteHand) {
+    private boolean compareBothHandsAtSamePosition(HandOfFiveCards blackHand, int samePosition, HandOfFiveCards whiteHand) {
         return blackHand.getSortedHand().get(samePosition).equals(whiteHand.getSortedHand().get(samePosition));
     }
     
-    public boolean compareSameHandPositionForWhiteWin(HandOfFiveCards blackHand, int samePosition, HandOfFiveCards whiteHand) {
+    private boolean compareSameHandPositionForWhiteWin(HandOfFiveCards blackHand, int samePosition, HandOfFiveCards whiteHand) {
         return blackHand.getSortedHand().get(samePosition)<whiteHand.getSortedHand().get(samePosition);
     }
 
-    public boolean compareSameHandPositionForBlackWin(HandOfFiveCards blackHand, int samePosition, HandOfFiveCards whiteHand) {
+    private boolean compareSameHandPositionForBlackWin(HandOfFiveCards blackHand, int samePosition, HandOfFiveCards whiteHand) {
         return blackHand.getSortedHand().get(samePosition)>whiteHand.getSortedHand().get(samePosition);
     }
 
-    public boolean onePairTieBreakerComparison(ArrayList<Integer> onePairTieBreakerArrayListForBlack, 
+    private boolean onePairTieBreakerComparison(ArrayList<Integer> onePairTieBreakerArrayListForBlack, 
                                                ArrayList<Integer> onePairTieBreakerArrayListForWhite, 
                                                HandOfFiveCards blackHand, HandOfFiveCards whiteHand) {
         if(onePairTieBreakerArrayListForBlack.get(0) > onePairTieBreakerArrayListForWhite.get(0)){
@@ -140,7 +140,7 @@ public class TieBreakerEvaluation{
         }
     }
 
-    public boolean TwoPairTieBreakerComparison(ArrayList<Integer> twoPairTieBreakerArrayListForBlack, 
+    private boolean TwoPairTieBreakerComparison(ArrayList<Integer> twoPairTieBreakerArrayListForBlack, 
                                                ArrayList<Integer> twoPairTieBreakerArrayListForWhite, 
                                                HandOfFiveCards blackHand, HandOfFiveCards whiteHand) {
         if(twoPairTieBreakerArrayListForBlack.get(1)>twoPairTieBreakerArrayListForWhite.get(1)){
@@ -162,14 +162,14 @@ public class TieBreakerEvaluation{
         } return FlipCoin();
     }
 
-    public int deleteMatchingPairFromArray(HandOfFiveCards whiteHand, int i) {
+    private int deleteMatchingPairFromArray(HandOfFiveCards whiteHand, int i) {
         whiteHand.getSortedHand().remove(i);
         whiteHand.getSortedHand().remove(i);
         i--;
         return i;
     }
     
-    public boolean FlipCoin() {
+    private boolean FlipCoin() {
         int randomNum = ThreadLocalRandom.current().nextInt(0,2);
         System.out.println("A Tie Break Could Not Be Established. A Coin Flip Will Decide"
                 + " The Winner! (otherwise split the pot accordingly):");

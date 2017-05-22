@@ -4,14 +4,9 @@ package pokerkata;
 class ReadOutOfHandAndRanking {
 
 public void printPlayersHandAndRanking(HandRankings evaluatedHand, 
-                                  HandOfFiveCards playersHand) {
-    if((playersHand.counter%2) == 0){
-        System.out.print("Black Player's Hand: ");
-    } else{
-        System.out.print("White Player's Hand: ");
-    }
-        playersHand.printOutHand();
-        
+                                       HandOfFiveCards playersHand) {
+        System.out.print(playersHand.getPlayer()+" Player's Hand: ");
+        playersHand.printOutHand();        
         System.out.println("Hand Ranking: "+ evaluatedHand.getNameOfHand());        
     }  
 

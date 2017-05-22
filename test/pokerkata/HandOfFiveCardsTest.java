@@ -34,7 +34,7 @@ public class HandOfFiveCardsTest {
         HandOfFiveCards instance = new HandOfFiveCards();
         instance.makeANewHand("AS", "9S", "2H", "QH", "7D");
         assertTrue(instance.getSortedHand().size()==5);
-        assertTrue("Error: Expecting first card's value to be \"2H\"",instance.getSortedHand().contains(2));
+        assertTrue("Error: Expecting first card's value to be \"2\"",instance.getSortedHand().contains(2));
     }
 
     @Test
@@ -50,7 +50,7 @@ public class HandOfFiveCardsTest {
         HandOfFiveCards instance = new HandOfFiveCards();
         instance.makeANewHand("AS", "9S", "2H", "QH", "7D");        
         String result = instance.getFirstCardsuit();
-        assertEquals("Error: Last Suit should be \"S\"","S", result);
+        assertEquals("Error: First card suit should be \"S\"","S", result);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class HandOfFiveCardsTest {
         HandOfFiveCards instance = new HandOfFiveCards();
         instance.makeANewHand("AS", "5C", "2H", "QH", "7D");        
         String result = instance.getSecondCardsuit();
-        assertEquals("Error: Last Suit should be \"C\"","C", result);
+        assertEquals("Error: Second card suit should be \"C\"","C", result);
     }
 
     @Test
@@ -66,7 +66,7 @@ public class HandOfFiveCardsTest {
         HandOfFiveCards instance = new HandOfFiveCards();
         instance.makeANewHand("AS", "9S", "2H", "QH", "7D");        
         String result = instance.getThirdCardsuit();
-        assertEquals("Error: Last Suit should be \"H\"","H", result);
+        assertEquals("Error: Third card suit should be \"H\"","H", result);
     }
 
     @Test
@@ -74,7 +74,7 @@ public class HandOfFiveCardsTest {
         HandOfFiveCards instance = new HandOfFiveCards();
         instance.makeANewHand("AS", "9S", "2H", "QH", "7D");        
         String result = instance.getFourthCardsuit();
-        assertEquals("Error: Last Suit should be \"H\"","H", result);
+        assertEquals("Error: Fourth card suit should be \"H\"","H", result);
     }
 
     @Test
@@ -82,6 +82,6 @@ public class HandOfFiveCardsTest {
         HandOfFiveCards instance = new HandOfFiveCards();
         instance.makeANewHand("AS", "9S", "2H", "QH", "7D");        
         String result = instance.getFifthCardsuit();    
-        assertEquals("Error: Last Suit should be \"D\"","D", result);
+        assertEquals("Error: Fifth card suit should be \"D\"","D", result);
     }
 }

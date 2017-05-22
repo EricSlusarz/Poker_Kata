@@ -16,12 +16,12 @@ public class PokerKata {
         HandOfFiveCards whitePlayersHand = new HandOfFiveCards();
         HandOfFiveCards blackPlayersHand = new HandOfFiveCards();
 
-        HandRankings WhitePlayerHandEvaluator = new HandRankings();
-        HandRankings BlackPlayerHandEvaluator = new HandRankings();
+        HandRankings whitePlayerHandEvaluator = new HandRankings();
+        HandRankings blackPlayerHandEvaluator = new HandRankings();
 
         for(int i = 0; i < numberOfRounds;i++){
         match.playARound(deck, whitePlayersHand, blackPlayersHand, 
-              WhitePlayerHandEvaluator, BlackPlayerHandEvaluator);
+              whitePlayerHandEvaluator, blackPlayerHandEvaluator);
         }       
     }
 }

@@ -46,7 +46,7 @@ public class TieBreakerEvaluationTest {
         tieBreakerFor.setScoreOfHand(8);
         boolean expResult = true; //Since true means Black Wins
         boolean result = instance.compareTiedHands(blackHand, whiteHand, tieBreakerFor);
-        assertEquals("Black Should win with a Four of A Kind Hands",expResult, result);     
+        assertEquals("Black Should win with a Four of A Kind Hand",expResult, result);     
     }
         
     @Test
@@ -144,57 +144,5 @@ public class TieBreakerEvaluationTest {
         boolean expResult = true; //Since true means Black Wins
         boolean result = instance.compareTiedHands(blackHand, whiteHand, tieBreakerFor);
         assertEquals("Black Should win with a High Card",expResult, result);     
-    }
-
-    @Test
-    public void testNameWhiteWinnerComparingSamePositionInBothHands() {
-        int i = 0;
-        HandOfFiveCards blackHand = new HandOfFiveCards();
-        blackHand.makeANewHand("AS","QD","JH","5D","4C");
-        HandOfFiveCards whiteHand = new HandOfFiveCards();
-        whiteHand.makeANewHand("AC","QH","JD","5S","3C");
-        TieBreakerEvaluation tieBreakerEvaluator = new TieBreakerEvaluation();
-        boolean expResult = false;
-        boolean result = tieBreakerEvaluator.compareSameHandPositionForWhiteWin(blackHand, i, whiteHand);
-        assertEquals("Error: Black was expected to win",expResult, result);
-    }
-
-    @Test
-    public void testNameBlackWinnerComparingSamePositionInBothHands() {
-       int i = 0;
-        HandOfFiveCards blackHand = new HandOfFiveCards();
-        blackHand.makeANewHand("AS","QD","JH","5D","4C");
-        HandOfFiveCards whiteHand = new HandOfFiveCards();
-        whiteHand.makeANewHand("AC","QH","JD","5S","3C");
-        TieBreakerEvaluation tieBreakerEvaluator = new TieBreakerEvaluation();
-        boolean expResult = true;
-        boolean result = tieBreakerEvaluator.compareSameHandPositionForBlackWin(blackHand, i, whiteHand);
-        assertEquals("Error: Black was expected to win",expResult, result);
-    }
-
-    @Test
-    public void testCompareBothHandsAtFirstPosition() {
-        int i = 0;
-        HandOfFiveCards blackHand = new HandOfFiveCards();
-        blackHand.makeANewHand("AS","QD","JH","5D","4C");
-        HandOfFiveCards whiteHand = new HandOfFiveCards();
-        whiteHand.makeANewHand("AC","QH","JD","5S","3C");
-        TieBreakerEvaluation tieBreakerEvaluator = new TieBreakerEvaluation();
-        boolean expResult = false;
-        boolean result = tieBreakerEvaluator.compareBothHandsAtSamePosition(blackHand, i, whiteHand);
-        assertEquals("Error: first position is expecting different values",expResult, result);
-    }
-    
-    @Test
-    public void testCompareBothHandsAtFifthPosition() {
-        int i = 4;
-        HandOfFiveCards blackHand = new HandOfFiveCards();
-        blackHand.makeANewHand("AS","QD","JH","5D","4C");
-        HandOfFiveCards whiteHand = new HandOfFiveCards();
-        whiteHand.makeANewHand("AC","QH","JD","5S","3C");
-        TieBreakerEvaluation tieBreakerEvaluator = new TieBreakerEvaluation();
-        boolean expResult = true;
-        boolean result = tieBreakerEvaluator.compareBothHandsAtSamePosition(blackHand, i, whiteHand);
-        assertEquals("Error: first position is expecting the same values",expResult, result);
     }
 }

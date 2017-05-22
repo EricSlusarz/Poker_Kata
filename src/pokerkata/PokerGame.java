@@ -4,7 +4,7 @@ package pokerkata;
 class PokerGame {
 
     void playARound(DeckOfCards deck, HandOfFiveCards whitePlayersHand, HandOfFiveCards blackPlayersHand, 
-                    HandRankings WhitePlayerHandEvaluator, HandRankings BlackPlayerHandEvaluator) {
+                    HandRankings whitePlayerHandEvaluator, HandRankings blackPlayerHandEvaluator) {
     if((blackPlayersHand.counter%5)==0) {  
         deck.makeANewDeck();
     }
@@ -21,34 +21,34 @@ class PokerGame {
                                       deck.drawOneCard(),
                                       deck.drawOneCard());
         
-        WhitePlayerHandEvaluator.evaluatePokerHand(whitePlayersHand);
-        BlackPlayerHandEvaluator.evaluatePokerHand(blackPlayersHand);
+        whitePlayerHandEvaluator.evaluatePokerHand(whitePlayersHand);
+        blackPlayerHandEvaluator.evaluatePokerHand(blackPlayersHand);
         
-        declareWinner(WhitePlayerHandEvaluator, BlackPlayerHandEvaluator, blackPlayersHand, whitePlayersHand);
+        declareWinner(whitePlayerHandEvaluator, blackPlayerHandEvaluator, blackPlayersHand, whitePlayersHand);
         
         deck.printOutCardsInDeck();
     }
-    private void declareWinner(HandRankings WhitePlayerHandEvaluator, HandRankings BlackPlayerHandEvaluator, 
+    private void declareWinner(HandRankings whitePlayerHandEvaluator, HandRankings blackPlayerHandEvaluator, 
                                HandOfFiveCards blackPlayersHand, HandOfFiveCards whitePlayersHand) {
         
         ReadOutOfHandAndRanking readOut = new ReadOutOfHandAndRanking();
 
-        readOut.printPlayersHandAndRanking(WhitePlayerHandEvaluator, whitePlayersHand);
-        readOut.printPlayersHandAndRanking(BlackPlayerHandEvaluator, blackPlayersHand);
+        readOut.printPlayersHandAndRanking(whitePlayerHandEvaluator, whitePlayersHand);
+        readOut.printPlayersHandAndRanking(blackPlayerHandEvaluator, blackPlayersHand);
         
-        if (WhitePlayerHandEvaluator.getScoreOfHand() > BlackPlayerHandEvaluator.getScoreOfHand()) {
-            readOut.printOutWinningHandandPlayer(WhitePlayerHandEvaluator, whitePlayersHand);
-        } else if (WhitePlayerHandEvaluator.getScoreOfHand() < BlackPlayerHandEvaluator.getScoreOfHand()) {
-            readOut.printOutWinningHandandPlayer(BlackPlayerHandEvaluator, blackPlayersHand);
+        if (whitePlayerHandEvaluator.getScoreOfHand() > blackPlayerHandEvaluator.getScoreOfHand()) {
+            readOut.printOutWinningHandandPlayer(whitePlayerHandEvaluator, whitePlayersHand);
+        } else if (whitePlayerHandEvaluator.getScoreOfHand() < blackPlayerHandEvaluator.getScoreOfHand()) {
+            readOut.printOutWinningHandandPlayer(blackPlayerHandEvaluator, blackPlayersHand);
         } else {
             readOut.printOutWinningHandandPlayer();
             
             TieBreakerEvaluation tieBreakerEvaluator = new TieBreakerEvaluation();
             
-            if (tieBreakerEvaluator.compareTiedHands(blackPlayersHand, whitePlayersHand, WhitePlayerHandEvaluator)){
-                readOut.tieBreakerWinngingPrintOut(BlackPlayerHandEvaluator, blackPlayersHand);
+            if (tieBreakerEvaluator.compareTiedHands(blackPlayersHand, whitePlayersHand, whitePlayerHandEvaluator)){
+                readOut.tieBreakerWinngingPrintOut(blackPlayerHandEvaluator, blackPlayersHand);
             } else {
-                readOut.tieBreakerWinngingPrintOut(WhitePlayerHandEvaluator, whitePlayersHand);
+                readOut.tieBreakerWinngingPrintOut(whitePlayerHandEvaluator, whitePlayersHand);
             }
         }
     }

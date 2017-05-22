@@ -9,7 +9,7 @@ import java.util.List;
 class DeckOfCards {
    List<String> packOfCards;
 
-    public List makeANewDeck(){
+    protected List makeANewDeck(){
            System.out.println("Add all the cards back together and "
                    + "shuffle the deck.\n");
        packOfCards = new ArrayList<>(Arrays.asList(

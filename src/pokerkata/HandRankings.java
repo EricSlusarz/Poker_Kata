@@ -113,18 +113,18 @@ public class HandRankings {
         }
     }
 
-    public boolean findConsecutiveValues(HandOfFiveCards hand, int i) {
+    private boolean findConsecutiveValues(HandOfFiveCards hand, int i) {
         return hand.getSortedHand().get(i) + 1 != hand.getSortedHand().get(i + 1);
     }
 
-    public boolean compareAllCardsForSameSuit(HandOfFiveCards hand){
+    private boolean compareAllCardsForSameSuit(HandOfFiveCards hand){
         return     hand.getFifthCardsuit().equals(hand.getFourthCardsuit())
                 && hand.getFourthCardsuit().equals(hand.getThirdCardsuit())
                 && hand.getThirdCardsuit().equals(hand.getSecondCardsuit())
                 && hand.getSecondCardsuit().equals(hand.getFirstCardsuit());
     }
 
-    public boolean compareTwoPositionsInHand(HandOfFiveCards hand, int firstPosition, int SecondPosition) {
+    private boolean compareTwoPositionsInHand(HandOfFiveCards hand, int firstPosition, int SecondPosition) {
         return hand.getSortedHand().get(firstPosition).equals(hand.getSortedHand().get(SecondPosition));
     }
 
